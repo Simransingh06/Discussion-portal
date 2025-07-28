@@ -1,0 +1,118 @@
+@import "../../../styles/variables.scss";
+
+$asideWidth: 200px;
+$assidePadding: 1rem;
+$assideGap: 1rem;
+$toggleExtra: 1.2rem;
+$toggleSize: 1.5rem;
+$togglePaddingX: 0rem;
+$togglePaddingY: 1rem;
+
+.content {
+    color: $primaryFontColor;
+
+    &__drawer {
+        z-index: 5;
+        background-color: $secondaryBg;
+        box-shadow: $shadow;
+        width: $asideWidth;
+
+        @include breakpoint(md) {
+            left: 0;
+        }
+
+        position: fixed;
+        top: $headerHeight;
+        bottom: 0px;
+        left: calc(0px - #{$asideWidth});
+
+        display: flex;
+
+        transition: 0.3s ease all;
+
+        &__active {
+            left: 0px;
+        }
+
+        &__toggle {
+            z-index: -1;
+            margin: auto 0px;
+            font-size: $toggleSize;
+
+            padding: $togglePaddingY $togglePaddingX;
+            border-radius: 0px $borderRadius $borderRadius 0px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background-color: inherit;
+
+            transition: 0.3s ease all;
+
+            &__off {
+                translate: 0px calc(0px - #{$headerHeight} / 2);
+                box-shadow: none;
+            }
+
+            &__onn {
+                translate: calc(#{$toggleExtra})
+                    calc(0px - #{$headerHeight} / 2);
+
+                box-shadow: inherit;
+            }
+        }
+
+        &__content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: $assideGap;
+            padding: $assidePadding;
+
+            & > * {
+                padding-bottom: 0.4rem;
+
+                &:not(:last-child) {
+                    border-bottom: 2px solid $primaryFontColor;
+                }
+            }
+
+            &__search {
+                background-color: Blue;
+            }
+
+            &__btnContainer {
+                display: flex;
+                flex-direction: column;
+
+                button {
+                    border: 1px solid $primaryFontColor;
+                    outline: 1px solid $primaryFontColor;
+                    border-radius: $borderRadius / 2;
+
+                    background-color: white;
+
+                    padding: 0.5rem 1rem;
+
+                    font-weight: bold;
+
+                    transition: 0.3s ease all;
+
+                    &:hover {
+                        outline: 1px solid $primaryDark;
+                        color: $primaryDark;
+                    }
+                }
+            }
+        }
+    }
+
+    &__main {
+        transition: 0.3s ease all;
+
+        @include breakpoint(md) {
+            margin-left: $asideWidth;
+        }
+    }
+}

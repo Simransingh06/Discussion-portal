@@ -1,0 +1,12 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.body__description {
+  font-size: 1rem;
+}
+.body__author {
+  font-size: 0.8rem;
+  font-weight: lighter;
+}/*# sourceMappingURL=TitleCard.module.css.map */
